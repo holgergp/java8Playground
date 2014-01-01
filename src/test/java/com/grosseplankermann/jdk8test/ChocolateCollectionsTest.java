@@ -13,13 +13,11 @@ public class ChocolateCollectionsTest {
     }
 
     @Test
-    @Ignore
     public void testJdk7wayWithAHintOfFunctions() throws Exception {
         assertEquals(2,new ChocolateCollections().jdk7wayWithAHintOfFunctions() );
     }
 
     @Test
-    @Ignore
     public void testJdk8wayWithClosures() throws Exception {
         assertEquals(2,new ChocolateCollections().jdk8wayWithClosures() );
     }

@@ -1,5 +1,7 @@
 package com.grosseplankermann.jdk8test;
 
+import com.google.common.collect.Collections2;
+import com.google.common.collect.Iterables;
 import com.grosseplankermann.jdk8test.model.ChocolateBar;
 import com.grosseplankermann.jdk8test.model.ChocolateType;
 
@@ -7,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.function.Function;
 import java.util.function.Predicate;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -37,20 +41,40 @@ public class ChocolateCollections {
         for (ChocolateBar chocolateBar : chocolateBarCollection) {
             if (chocolateBar.getChocolateType() == ChocolateType.HAZELNUT) {
                 chocolateCounter++;
-
             }
         }
         return chocolateCounter;
 
     }
 
-    public long jdk7wayWithAHintOfFunctions() {
-        return 0;
+    public int jdk7wayWithAHintOfFunctions() {
+        final Collection<ChocolateBar> chocolateBarCollection = getChocolateBarCollection();
+
+        final Collection<ChocolateType> chocolateTypeCollection = Collections2.transform(chocolateBarCollection, new com.google.common.base.Function<ChocolateBar, ChocolateType>() {
+            @Override
+            public ChocolateType apply(ChocolateBar chocolateBar) {
+                return chocolateBar.getChocolateType();
+            }
+        });
+
+        final ArrayList<ChocolateType> filteredChocolateBars = newArrayList(Iterables.filter(chocolateTypeCollection, new com.google.common.base.Predicate<ChocolateType>() {
+            @Override
+            public boolean apply(ChocolateType chocolateType) {
+                return chocolateType == ChocolateType.HAZELNUT;
+            }
+        }));
+
+        return filteredChocolateBars.size();
     }
 
 
-    public long jdk8wayWithClosures() {
-        return 0;
+    public int jdk8wayWithClosures() {
+        final Collection<ChocolateBar> chocolateBarCollection = getChocolateBarCollection();
+
+       chocolateBarCollection.removeIf(chocolateBar -> chocolateBar.getChocolateType() != ChocolateType.HAZELNUT);
+        return chocolateBarCollection.size();
+
+
     }
 
     public long jdk8wayWithAnonymousClassesAndStreamsAPI() {
