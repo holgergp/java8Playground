@@ -40,4 +40,9 @@ public class ChocolateCollectionsTest {
     public void averageNumberOfPiecesJDK8() {
         assertEquals(15d,new ChocolateCollections().averageNumberOfPiecesForChocolateHeavierThan50GramsJDK8().getAsDouble(),0);
     }
+
+    @Test
+    public void averageNumberOfPiecesJDK7() {
+        assertEquals(15d,new ChocolateCollections().averageNumberOfPiecesForChocolateHeavierThan50GramsJDK7(),0);
+    }
 }

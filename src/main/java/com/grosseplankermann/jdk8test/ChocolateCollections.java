@@ -98,17 +98,36 @@ public class ChocolateCollections {
 
     public long countHazelnutChocolateJdk8wayWithClosuresAndStreamsAPI() {
         return getChocolateBarCollection().stream()
-                .map(chocolateBar -> chocolateBar.getChocolateType())
+                .map(ChocolateBar::getChocolateType)
                 .filter(chocolateType -> chocolateType == ChocolateType.HAZELNUT)
                 .count();
     }
 
 
-    public OptionalDouble averageNumberOfPiecesForChocolateHeavierThan50GramsJDK8(){
+    public OptionalDouble averageNumberOfPiecesForChocolateHeavierThan50GramsJDK8() {
         return getChocolateBarCollection().stream()
-                .filter(chocolateBar-> chocolateBar.getWeight()>50)
+                .filter(chocolateBar -> chocolateBar.getWeight() > 50)
                 .mapToInt(ChocolateBar::getNumberOfPieces)
                 .average();
+
+    }
+
+    public double averageNumberOfPiecesForChocolateHeavierThan50GramsJDK7() {
+
+        final Collection<ChocolateBar> chocolateBarCollection = getChocolateBarCollection();
+        int selectedChocolateBars = 0;
+        int sumOfPieces = 0;
+        double average = 0;
+        for (ChocolateBar chocolateBar : chocolateBarCollection) {
+            if (chocolateBar.getWeight() > 50) {
+                selectedChocolateBars++;
+                sumOfPieces += chocolateBar.getNumberOfPieces();
+            }
+        }
+        if (selectedChocolateBars > 0) {
+            average = sumOfPieces / selectedChocolateBars;
+        }
+        return average;
 
     }
 
@@ -125,5 +144,6 @@ public class ChocolateCollections {
         chocolateBars.add(new ChocolateBar(1, 45, ChocolateType.PEANUTS, "Snickers"));
         return chocolateBars;
     }
+
 
 }
