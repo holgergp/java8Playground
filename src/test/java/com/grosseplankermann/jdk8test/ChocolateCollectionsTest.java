@@ -7,27 +7,32 @@ import static org.junit.Assert.assertEquals;
 
 public class ChocolateCollectionsTest {
     @Test
-    public void testJdk7way() throws Exception {
-        assertEquals(2,new ChocolateCollections().countHazelnutChocolateJdk7way() );
+    public void countHazelnutChocolateJdk7way() throws Exception {
+        assertEquals(2, new ChocolateCollections().countHazelnutChocolateJdk7way());
     }
 
     @Test
-    public void testJdk7wayWithAHintOfFunctions() throws Exception {
-        assertEquals(2,new ChocolateCollections().countHazelnutChocolateJdk7wayWithAHintOfFunctions() );
+    public void countHazelnutChocolateJdk7wayWithAHintOfFunctions() throws Exception {
+        assertEquals(2, new ChocolateCollections().countHazelnutChocolateJdk7wayWithAHintOfFunctions());
     }
 
     @Test
-    public void testJdk8wayWithClosures() throws Exception {
-        assertEquals(2,new ChocolateCollections().countHazelnutChocolateJdk8wayWithClosures() );
+    public void countHazelnutChocolateJdk8wayWithClosures() throws Exception {
+        assertEquals(2, new ChocolateCollections().countHazelnutChocolateJdk8wayWithClosures());
     }
 
     @Test
-    public void testJdk8wayWithAnonymousClassesAndStreamsAPI() throws Exception {
-        assertEquals(2,new ChocolateCollections().countHazelnutChocolateJdk8wayWithAnonymousClassesAndStreamsAPI() );
+    public void countHazelnutChocolateJdk8wayWithAnonymousClassesAndStreamsAPI() throws Exception {
+        assertEquals(2, new ChocolateCollections().countHazelnutChocolateJdk8wayWithAnonymousClassesAndStreamsAPI());
     }
 
     @Test
-    public void testJdk8wayWithClosuresAndStreamsAPI() throws Exception {
-        assertEquals(2,new ChocolateCollections().countHazelnutChocolateJdk8wayWithClosuresAndStreamsAPI() );
+    public void countHazelnutChocolateJdk8wayWithClosuresAndStreamsAPI() throws Exception {
+        assertEquals(2, new ChocolateCollections().countHazelnutChocolateJdk8wayWithClosuresAndStreamsAPI());
+    }
+
+    @Test
+    public void treatCodeAsData() {
+        new ChocolateCollections().treatingCodeAsData(p -> System.out.println(p));
     }
 }

@@ -7,6 +7,8 @@ import com.grosseplankermann.jdk8test.model.ChocolateType;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -29,6 +31,10 @@ public class ChocolateCollections {
 
     }
 
+    public void treatingCodeAsData(Consumer consumer) {
+        final Collection<ChocolateBar> chocolateBarCollection = getChocolateBarCollection();
+        chocolateBarCollection.forEach(consumer);
+    }
 
     public int countHazelnutChocolateJdk7way() {
 
@@ -94,7 +100,6 @@ public class ChocolateCollections {
                 .map(chocolateBar -> chocolateBar.getChocolateType())
                 .filter(chocolateType -> chocolateType == ChocolateType.HAZELNUT)
                 .count();
-
     }
 
     private Collection<ChocolateBar> getChocolateBarCollection() {
