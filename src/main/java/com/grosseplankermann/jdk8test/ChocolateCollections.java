@@ -13,11 +13,7 @@ import java.util.function.Predicate;
 import static com.google.common.collect.Lists.newArrayList;
 
 /**
- * Created with IntelliJ IDEA.
- * User: flunky
- * Date: 29.12.13
- * Time: 14:28
- * To change this template use File | Settings | File Templates.
+ * Try different ways to work on a collection, comparing JDK7 and JDK8 style
  */
 public class ChocolateCollections {
 
@@ -34,7 +30,7 @@ public class ChocolateCollections {
     }
 
 
-    public int jdk7way() {
+    public int countHazelnutChocolateJdk7way() {
 
         final Collection<ChocolateBar> chocolateBarCollection = getChocolateBarCollection();
         int chocolateCounter = 0;
@@ -47,7 +43,7 @@ public class ChocolateCollections {
 
     }
 
-    public int jdk7wayWithAHintOfFunctions() {
+    public int countHazelnutChocolateJdk7wayWithAHintOfFunctions() {
         final Collection<ChocolateBar> chocolateBarCollection = getChocolateBarCollection();
 
         final Collection<ChocolateType> chocolateTypeCollection = Collections2.transform(chocolateBarCollection, new com.google.common.base.Function<ChocolateBar, ChocolateType>() {
@@ -68,16 +64,16 @@ public class ChocolateCollections {
     }
 
 
-    public int jdk8wayWithClosures() {
+    public int countHazelnutChocolateJdk8wayWithClosures() {
         final Collection<ChocolateBar> chocolateBarCollection = getChocolateBarCollection();
 
-       chocolateBarCollection.removeIf(chocolateBar -> chocolateBar.getChocolateType() != ChocolateType.HAZELNUT);
+        chocolateBarCollection.removeIf(chocolateBar -> chocolateBar.getChocolateType() != ChocolateType.HAZELNUT);
         return chocolateBarCollection.size();
 
 
     }
 
-    public long jdk8wayWithAnonymousClassesAndStreamsAPI() {
+    public long countHazelnutChocolateJdk8wayWithAnonymousClassesAndStreamsAPI() {
         return getChocolateBarCollection().stream().map(new Function<ChocolateBar, Object>() {
             @Override
             public Object apply(ChocolateBar chocolateBar) {
@@ -93,7 +89,7 @@ public class ChocolateCollections {
 
     }
 
-    public long jdk8wayWithClosuresAndStreamsAPI() {
+    public long countHazelnutChocolateJdk8wayWithClosuresAndStreamsAPI() {
         return getChocolateBarCollection().stream()
                 .map(chocolateBar -> chocolateBar.getChocolateType())
                 .filter(chocolateType -> chocolateType == ChocolateType.HAZELNUT)
