@@ -3,7 +3,7 @@ package com.grosseplankermann.jdk8test.model;
 /**
  * Domain Class holding all necessary attributes of a chocolateBar
  */
-public class ChocolateBar implements CandyBar{
+public class ChocolateBar implements CaloryAware {
 
     int numberOfPieces;
     int weight;

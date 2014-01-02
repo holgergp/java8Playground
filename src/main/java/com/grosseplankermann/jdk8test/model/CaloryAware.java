@@ -3,7 +3,7 @@ package com.grosseplankermann.jdk8test.model;
 /**
  * Interface with the sole purpose of showing a default method
  */
-public interface CandyBar {
+public interface CaloryAware {
 
 
      int getWeight();
