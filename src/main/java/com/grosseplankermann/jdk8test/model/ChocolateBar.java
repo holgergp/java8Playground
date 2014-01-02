@@ -48,4 +48,14 @@ public class ChocolateBar {
     public void setBrandName(String brandName) {
         this.brandName = brandName;
     }
+
+    @Override
+    public String toString() {
+        return "ChocolateBar{" +
+                "numberOfPieces=" + numberOfPieces +
+                ", weight=" + weight +
+                ", chocolateType=" + chocolateType +
+                ", brandName='" + brandName + '\'' +
+                '}';
+    }
 }

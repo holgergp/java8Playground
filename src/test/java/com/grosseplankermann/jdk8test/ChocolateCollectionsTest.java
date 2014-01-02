@@ -35,4 +35,9 @@ public class ChocolateCollectionsTest {
     public void treatCodeAsData() {
         new ChocolateCollections().treatingCodeAsData(p -> System.out.println(p));
     }
+
+    @Test
+    public void averageNumberOfPiecesJDK8() {
+        assertEquals(15d,new ChocolateCollections().averageNumberOfPiecesForChocolateHeavierThan50GramsJDK8().getAsDouble(),0);
+    }
 }

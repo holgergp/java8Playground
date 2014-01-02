@@ -8,6 +8,7 @@ import com.grosseplankermann.jdk8test.model.ChocolateType;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
+import java.util.OptionalDouble;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -102,6 +103,15 @@ public class ChocolateCollections {
                 .count();
     }
 
+
+    public OptionalDouble averageNumberOfPiecesForChocolateHeavierThan50GramsJDK8(){
+        return getChocolateBarCollection().stream()
+                .filter(chocolateBar-> chocolateBar.getWeight()>50)
+                .mapToInt(ChocolateBar::getNumberOfPieces)
+                .average();
+
+    }
+
     private Collection<ChocolateBar> getChocolateBarCollection() {
         Collection<ChocolateBar> chocolateBars;
         chocolateBars = new ArrayList<>();
@@ -111,6 +121,8 @@ public class ChocolateCollections {
         chocolateBars.add(new ChocolateBar(10, 180, ChocolateType.HAZELNUT, "Ritter Sport"));
         chocolateBars.add(new ChocolateBar(5, 20, ChocolateType.WHOLEMILK, "Kinder Schokolade"));
         chocolateBars.add(new ChocolateBar(18, 100, ChocolateType.RAISINS, "Schogetten"));
+        chocolateBars.add(new ChocolateBar(7, 55, ChocolateType.WHOLEMILK, "Lindt"));
+        chocolateBars.add(new ChocolateBar(1, 45, ChocolateType.PEANUTS, "Snickers"));
         return chocolateBars;
     }
 
