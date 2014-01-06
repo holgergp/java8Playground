@@ -1,8 +1,15 @@
 package com.grosseplankermann.jdk8test;
 
+
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class ChocolateCollectionsTest {
@@ -38,12 +45,32 @@ public class ChocolateCollectionsTest {
 
     @Test
     public void averageNumberOfPiecesJDK8() {
-        assertEquals(15d,new ChocolateCollections().averageNumberOfPiecesForChocolateHeavierThan50GramsJDK8().getAsDouble(),0);
+        assertEquals(15d, new ChocolateCollections().averageNumberOfPiecesForChocolateHeavierThan50GramsJDK8().getAsDouble(), 0);
     }
 
     @Test
     public void averageNumberOfPiecesJDK7() {
-        assertEquals(15d,new ChocolateCollections().averageNumberOfPiecesForChocolateHeavierThan50GramsJDK7(),0);
+        assertEquals(15d, new ChocolateCollections().averageNumberOfPiecesForChocolateHeavierThan50GramsJDK7(), 0);
     }
 
+
+    @Test
+    public void customFunctionalInterface() {
+        assertEquals("Lambdas rock", new ChocolateCollections().consumeCustomFunctionalInterface(
+                () -> "Lambdas " + "rock"
+        ));
+    }
+
+    @Test
+    public void predefinedFunctionalInterface() {
+
+
+        String[] lambdaList = {"rock", "suck", "are green"};
+
+        assertEquals(StringUtils.countMatches(new ChocolateCollections().consumeFunction(
+                p -> "Lambdas " + p + " "
+                , lambdaList), "Lambdas"), 3);
+
+
+    }
 }

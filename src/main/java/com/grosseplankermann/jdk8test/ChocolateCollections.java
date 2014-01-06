@@ -5,10 +5,7 @@ import com.google.common.collect.Iterables;
 import com.grosseplankermann.jdk8test.model.ChocolateBar;
 import com.grosseplankermann.jdk8test.model.ChocolateType;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.OptionalDouble;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -129,6 +126,34 @@ public class ChocolateCollections {
         }
         return average;
 
+    }
+
+    /**
+     * Example of a method using a custom functional interface
+     * @param myOwnFunctionalInterface
+     * @return
+     */
+    public String consumeCustomFunctionalInterface(MyOwnFunctionalInterface myOwnFunctionalInterface) {
+        return myOwnFunctionalInterface.myFunction();
+    }
+
+    /**
+     * Example of a function using the predefined functional interface function
+     * @param function
+     * @param stringList
+     * @return
+     */
+    public String consumeFunction(Function<String, String> function, String[] stringList) {
+        /**StringBuffer buffer = new StringBuffer();
+        for (String s : stringList) {
+            buffer.append(function.apply(s));
+        }
+
+        return buffer.toString();    **/
+
+
+        final List<String> strings = Arrays.asList(stringList);
+        return String.valueOf(strings.stream().reduce("",(a,b)-> a+ function.apply(b)));
     }
 
     private Collection<ChocolateBar> getChocolateBarCollection() {
