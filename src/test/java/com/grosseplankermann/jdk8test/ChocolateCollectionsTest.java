@@ -67,9 +67,11 @@ public class ChocolateCollectionsTest {
 
         String[] lambdaList = {"rock", "suck", "are green"};
 
-        assertEquals(StringUtils.countMatches(new ChocolateCollections().consumeFunction(
-                p -> "Lambdas " + p + " "
-                , lambdaList), "Lambdas"), 3);
+        assertEquals(StringUtils.countMatches(
+                new ChocolateCollections().consumeFunction(
+                p -> "Lambdas " + p + " ", lambdaList), "Lambdas")
+
+                , 3);
 
 
     }
