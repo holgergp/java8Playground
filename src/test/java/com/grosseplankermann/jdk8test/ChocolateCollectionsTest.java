@@ -49,6 +49,11 @@ public class ChocolateCollectionsTest {
     }
 
     @Test
+    public void averageNumberOfPiecesJDK8Parallel() {
+        assertEquals(15d, new ChocolateCollections().averageNumberOfPiecesForChocolateHeavierThan50GramsJDK8Parallel().getAsDouble(), 0);
+    }
+
+    @Test
     public void averageNumberOfPiecesJDK7() {
         assertEquals(15d, new ChocolateCollections().averageNumberOfPiecesForChocolateHeavierThan50GramsJDK7(), 0);
     }
@@ -69,7 +74,9 @@ public class ChocolateCollectionsTest {
 
         assertEquals(StringUtils.countMatches(
                 new ChocolateCollections().consumeFunction(
-                p -> "Lambdas " + p + " ", lambdaList), "Lambdas")
+                p -> "Lambdas " + p + " ", lambdaList)
+
+                , "Lambdas")
 
                 , 3);
 

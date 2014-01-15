@@ -102,10 +102,25 @@ public class ChocolateCollections {
 
 
     public OptionalDouble averageNumberOfPiecesForChocolateHeavierThan50GramsJDK8() {
-        return getChocolateBarCollection().stream()
+        final long start = System.nanoTime();
+
+        final OptionalDouble average = getChocolateBarCollection().stream()
                 .filter(chocolateBar -> chocolateBar.getWeight() > 50)
                 .mapToInt(ChocolateBar::getNumberOfPieces)
                 .average();
+        System.out.println(String.format("Execution time sequential %d microseconds", (System.nanoTime() - start)/ 10000));
+        return average;
+
+    }
+
+    public OptionalDouble averageNumberOfPiecesForChocolateHeavierThan50GramsJDK8Parallel() {
+        final long start = System.nanoTime();
+        final OptionalDouble average = getChocolateBarCollection().parallelStream()
+                .filter(chocolateBar -> chocolateBar.getWeight() > 50)
+                .mapToInt(ChocolateBar::getNumberOfPieces)
+                .average();
+        System.out.println(String.format("Execution time parallel %d microseconds", (System.nanoTime() - start)/ 1000));
+        return average;
 
     }
 
@@ -153,7 +168,8 @@ public class ChocolateCollections {
 
 
         final List<String> strings = Arrays.asList(stringList);
-        return String.valueOf(strings.stream().reduce("",(a,b)-> a+ function.apply(b)));
+        return String.valueOf(strings.stream()
+                .reduce("", (accumulator, currentValue) -> accumulator + function.apply(currentValue)));
     }
 
     private Collection<ChocolateBar> getChocolateBarCollection() {
