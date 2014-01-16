@@ -4,9 +4,6 @@ package com.grosseplankermann.jdk8test;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -58,6 +55,10 @@ public class ChocolateCollectionsTest {
         assertEquals(15d, new ChocolateCollections().averageNumberOfPiecesForChocolateHeavierThan50GramsJDK7(), 0);
     }
 
+    @Test
+    public void echoString(){
+        assertEquals("Ping",new ChocolateCollections().jdk8UnaryOperatorExample(echoString  -> echoString,"Ping"));
+    }
 
     @Test
     public void customFunctionalInterface() {
@@ -73,8 +74,8 @@ public class ChocolateCollectionsTest {
         String[] lambdaList = {"rock", "suck", "are green"};
 
         assertEquals(StringUtils.countMatches(
-                new ChocolateCollections().consumeFunction(
-                p -> "Lambdas " + p + " ", lambdaList)
+                new ChocolateCollections().appendStringsInStringArrayWithFunction(
+                        p -> "Lambdas " + p + " ", lambdaList)
 
                 , "Lambdas")
 

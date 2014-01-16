@@ -9,6 +9,7 @@ import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 
 import static com.google.common.collect.Lists.newArrayList;
 
@@ -144,6 +145,16 @@ public class ChocolateCollections {
     }
 
     /**
+     * Apply an Unary Operator
+     * @param echo
+     * @param echoString
+     * @return
+     */
+    public String jdk8UnaryOperatorExample(UnaryOperator<String> echo,String echoString){
+        return echo.apply(echoString);
+    }
+
+    /**
      * Example of a method using a custom functional interface
      * @param myOwnFunctionalInterface
      * @return
@@ -158,7 +169,7 @@ public class ChocolateCollections {
      * @param stringList
      * @return
      */
-    public String consumeFunction(Function<String, String> function, String[] stringList) {
+    public String appendStringsInStringArrayWithFunction(Function<String, String> function, String[] stringList) {
         /**StringBuffer buffer = new StringBuffer();
         for (String s : stringList) {
             buffer.append(function.apply(s));
