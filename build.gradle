@@ -5,6 +5,8 @@ task wrapper(type: Wrapper) {
 apply plugin: 'java'
 apply plugin: 'idea'
 
+compileJava.options.encoding = 'UTF-8'
+
 sourceCompatibility = 1.8
 version = '1.0'
 jar {
