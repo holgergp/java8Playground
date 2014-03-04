@@ -24,7 +24,6 @@ dependencies {
 }
 
 test {
-    systemProperties 'property': 'value'
     testLogging {
         // Show that tests are run in the command-line output
 
