@@ -10,6 +10,13 @@ import static org.junit.Assert.assertTrue;
 
 
 public class ChocolateCollectionsTest {
+
+
+    @Test
+    public void simpleIteration() {
+        new ChocolateCollections().simpleIteration(p -> System.out.println(p));
+    }
+
     @Test
     public void countHazelnutChocolateJdk7way() throws Exception {
         assertEquals(2, new ChocolateCollections().countHazelnutChocolateJdk7way());
@@ -36,11 +43,6 @@ public class ChocolateCollectionsTest {
     }
 
     @Test
-    public void treatCodeAsData() {
-        new ChocolateCollections().treatingCodeAsData(p -> System.out.println(p));
-    }
-
-    @Test
     public void averageNumberOfPiecesJDK8() {
         assertEquals(15d, new ChocolateCollections().averageNumberOfPiecesForChocolateHeavierThan50GramsJDK8().getAsDouble(), 0);
     }
@@ -55,32 +57,5 @@ public class ChocolateCollectionsTest {
         assertEquals(15d, new ChocolateCollections().averageNumberOfPiecesForChocolateHeavierThan50GramsJDK7(), 0);
     }
 
-    @Test
-    public void echoString(){
-        assertEquals("Ping",new ChocolateCollections().jdk8UnaryOperatorExample(echoString  -> echoString,"Ping"));
-    }
 
-    @Test
-    public void customFunctionalInterface() {
-        assertEquals("Lambdas rock", new ChocolateCollections().consumeCustomFunctionalInterface(
-                () -> "Lambdas " + "rock"
-        ));
-    }
-
-    @Test
-    public void predefinedFunctionalInterface() {
-
-
-        String[] lambdaList = {"rock", "suck", "are green"};
-
-        assertEquals(StringUtils.countMatches(
-                new ChocolateCollections().appendStringsInStringArrayWithFunction(
-                        p -> "Lambdas " + p + " ", lambdaList)
-
-                , "Lambdas")
-
-                , 3);
-
-
-    }
 }

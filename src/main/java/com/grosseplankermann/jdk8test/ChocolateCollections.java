@@ -18,25 +18,13 @@ import static com.google.common.collect.Lists.newArrayList;
  */
 public class ChocolateCollections {
 
-
-    public static void main(String[] args) {
-        Collection<String> mycol;
-        mycol = new ArrayList<>();
-        mycol.add("Test1");
-        mycol.add("Test2");
-        mycol.forEach(i -> {
-            System.out.print(i);
-        });
-
-    }
-
-    public void treatingCodeAsData(Consumer consumer) {
-        final Collection<ChocolateBar> chocolateBarCollection = getChocolateBarCollection();
+    public void simpleIteration(Consumer consumer) {
+        final Collection<ChocolateBar> chocolateBarCollection = ChocolateCollections.getChocolateBarCollection();
         chocolateBarCollection.forEach(consumer);
     }
 
-    public int countHazelnutChocolateJdk7way() {
 
+    public int countHazelnutChocolateJdk7way() {
         final Collection<ChocolateBar> chocolateBarCollection = getChocolateBarCollection();
         int chocolateCounter = 0;
         for (ChocolateBar chocolateBar : chocolateBarCollection) {
@@ -109,7 +97,7 @@ public class ChocolateCollections {
                 .filter(chocolateBar -> chocolateBar.getWeight() > 50)
                 .mapToInt(ChocolateBar::getNumberOfPieces)
                 .average();
-        System.out.println(String.format("Execution time sequential %d microseconds", (System.nanoTime() - start)/ 10000));
+        System.out.println(String.format("Execution time sequential %d microseconds", (System.nanoTime() - start) / 10000));
         return average;
 
     }
@@ -120,7 +108,7 @@ public class ChocolateCollections {
                 .filter(chocolateBar -> chocolateBar.getWeight() > 50)
                 .mapToInt(ChocolateBar::getNumberOfPieces)
                 .average();
-        System.out.println(String.format("Execution time parallel %d microseconds", (System.nanoTime() - start)/ 1000));
+        System.out.println(String.format("Execution time parallel %d microseconds", (System.nanoTime() - start) / 1000));
         return average;
 
     }
@@ -144,46 +132,8 @@ public class ChocolateCollections {
 
     }
 
-    /**
-     * Apply an Unary Operator
-     * @param echo
-     * @param echoString
-     * @return
-     */
-    public String jdk8UnaryOperatorExample(UnaryOperator<String> echo,String echoString){
-        return echo.apply(echoString);
-    }
 
-    /**
-     * Example of a method using a custom functional interface
-     * @param myOwnFunctionalInterface
-     * @return
-     */
-    public String consumeCustomFunctionalInterface(MyOwnFunctionalInterface myOwnFunctionalInterface) {
-        return myOwnFunctionalInterface.myFunction();
-    }
-
-    /**
-     * Example of a function using the predefined functional interface function
-     * @param function
-     * @param stringList
-     * @return
-     */
-    public String appendStringsInStringArrayWithFunction(Function<String, String> function, String[] stringList) {
-        /**StringBuffer buffer = new StringBuffer();
-        for (String s : stringList) {
-            buffer.append(function.apply(s));
-        }
-
-        return buffer.toString();    **/
-
-
-        final List<String> strings = Arrays.asList(stringList);
-        return String.valueOf(strings.stream()
-                .reduce("", (accumulator, currentValue) -> accumulator + function.apply(currentValue)));
-    }
-
-    private Collection<ChocolateBar> getChocolateBarCollection() {
+    public static Collection<ChocolateBar> getChocolateBarCollection() {
         Collection<ChocolateBar> chocolateBars;
         chocolateBars = new ArrayList<>();
         chocolateBars.add(new ChocolateBar(20, 100, ChocolateType.WHOLEMILK, "Sarotti"));
@@ -198,4 +148,14 @@ public class ChocolateCollections {
     }
 
 
+    public static void main(String[] args) {
+        Collection<String> mycol;
+        mycol = new ArrayList<>();
+        mycol.add("Test1");
+        mycol.add("Test2");
+        mycol.forEach(i -> {
+            System.out.print(i);
+        });
+
+    }
 }

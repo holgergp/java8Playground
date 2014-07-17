@@ -46,7 +46,7 @@ public class JDK8DateTest {
 
     @Test
     public void simpleLocalTimeParsing() throws Exception {
-        LocalTime time1 = LocalTime.parse("10:15:30");
+        LocalTime time1 = LocalTime.parse("10:14:30");
         LocalTime time2 = LocalTime.parse("11:15:30", DateTimeFormatter.ISO_TIME);
         assertTrue(time1.isBefore(time2));
 
@@ -59,7 +59,7 @@ public class JDK8DateTest {
 
         final LocalDateTime calendarDateTime = LocalDateTime.ofInstant(calendar.toInstant(), ZoneOffset.systemDefault());
 
-        assertTrue(calendarDateTime.isBefore(dateTime));
+        assertTrue(calendarDateTime.isBefore(dateTime.plusSeconds(1)));
     }
 
     @Test
