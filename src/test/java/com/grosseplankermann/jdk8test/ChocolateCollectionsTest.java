@@ -1,12 +1,9 @@
 package com.grosseplankermann.jdk8test;
 
 
-import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
-
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 
 public class ChocolateCollectionsTest {
