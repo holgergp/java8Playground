@@ -90,6 +90,25 @@ public class ChocolateCollections {
     }
 
 
+    public double averageNumberOfPiecesForChocolateHeavierThan50GramsJDK7() {
+
+        final Collection<ChocolateBar> chocolateBarCollection = getChocolateBarCollection();
+        int selectedChocolateBars = 0;
+        int sumOfPieces = 0;
+        double average = 0;
+        for (ChocolateBar chocolateBar : chocolateBarCollection) {
+            if (chocolateBar.getWeight() > 50) {
+                selectedChocolateBars++;
+                sumOfPieces += chocolateBar.getNumberOfPieces();
+            }
+        }
+        if (selectedChocolateBars > 0) {
+            average = sumOfPieces / selectedChocolateBars;
+        }
+        return average;
+
+    }
+
     public OptionalDouble averageNumberOfPiecesForChocolateHeavierThan50GramsJDK8() {
         final long start = System.nanoTime();
 
@@ -113,24 +132,6 @@ public class ChocolateCollections {
 
     }
 
-    public double averageNumberOfPiecesForChocolateHeavierThan50GramsJDK7() {
-
-        final Collection<ChocolateBar> chocolateBarCollection = getChocolateBarCollection();
-        int selectedChocolateBars = 0;
-        int sumOfPieces = 0;
-        double average = 0;
-        for (ChocolateBar chocolateBar : chocolateBarCollection) {
-            if (chocolateBar.getWeight() > 50) {
-                selectedChocolateBars++;
-                sumOfPieces += chocolateBar.getNumberOfPieces();
-            }
-        }
-        if (selectedChocolateBars > 0) {
-            average = sumOfPieces / selectedChocolateBars;
-        }
-        return average;
-
-    }
 
 
     public static Collection<ChocolateBar> getChocolateBarCollection() {
